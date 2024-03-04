@@ -24,6 +24,7 @@ public class MainTest {
             }
 
             long actualWins = Main.getChangeChoice().stream().filter(Boolean::valueOf).count();
+            //у Вас actualWins всегда будет 0, т.к. массив changeChoice из метода getChangeChoice() в классе Main заполняется только в методе main, а не в методе game
             assertEquals(expectedWins, actualWins, "Количество выигрышей с изменением выбора не соответствует ожидаемому");
         }
 
@@ -41,6 +42,7 @@ public class MainTest {
             }
 
             long actualWins = Main.getNotChangeChoice().stream().filter(Boolean::valueOf).count();
+            //у Вас actualWins всегда будет 0, т.к. массив notChangeChoice из метода getNotChangeChoice() в классе Main заполняется только в методе main, а не в методе game
             assertEquals(expectedWins, actualWins, "Количество выигрышей без изменения выбора не соответствует ожидаемому");
         }
     }
@@ -73,6 +75,7 @@ public class MainTest {
     @Test
     @DisplayName("Негативный тест метода game")
     void testNegativeGame() {
+        //почему метод Main.game должен бросать Exception ?
         assertThrows(NullPointerException.class, () -> Main.game(true), "Метод game не выбрасывает ожидаемое исключение");
     }
 }
